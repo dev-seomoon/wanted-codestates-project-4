@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types';
+import NewContent from '../../components/NewContent/NewContent';
 
 function Medium({ tabIndex }) {
-  return <div className={`content tab_${tabIndex}`}>Medium</div>;
+  return (
+    <div className={`content tab_${tabIndex}`}>
+      Medium
+      <NewContent />
+    </div>
+  );
 }
 
 Medium.propTypes = {
