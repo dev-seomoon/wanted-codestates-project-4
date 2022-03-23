@@ -6,6 +6,8 @@ import Medium from './tabs/Medium/Medium';
 import Youtube from './tabs/Youtube/Youtube';
 import './global.sass';
 
+const TABS = [<Medium />, <Youtube />, <Insight />];
+
 function App() {
   const [currentTab, setCurrentTab] = useState(0);
   const handleTabClick = (tabIndex) => {
@@ -15,11 +17,7 @@ function App() {
   return (
     <>
       <TabBar onClick={handleTabClick} currentTab={currentTab} />
-      <div className={`content_container current_${currentTab}`}>
-        <Medium tabIndex={0} />
-        <Youtube tabIndex={1} />
-        <Insight tabIndex={2} />
-      </div>
+      <div className={`content_container current_${currentTab}`}>{TABS[currentTab]}</div>
     </>
   );
 }
