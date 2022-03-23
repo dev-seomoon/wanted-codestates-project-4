@@ -5,7 +5,7 @@ import ShareIcon from '../../assets/icon_share.svg';
 
 function NewContent() {
   return (
-    <div className="content_box">
+    <div className="content_box new_content">
       <h2>
         새로 올라왔어요<span>NEW</span>
       </h2>
