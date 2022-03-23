@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/tabindex-no-positive */
-import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import TabBar from './components/TabBar/TabBar';
 import Insight from './tabs/Insight/Insight';
 import Medium from './tabs/Medium/Medium';
@@ -9,15 +9,12 @@ import './global.sass';
 const TABS = [<Medium />, <Youtube />, <Insight />];
 
 function App() {
-  const [currentTab, setCurrentTab] = useState(0);
-  const handleTabClick = (tabIndex) => {
-    setCurrentTab(tabIndex);
-  };
+  const currentTab = useSelector((state) => state.tab.value);
 
   return (
     <>
-      <TabBar onClick={handleTabClick} currentTab={currentTab} />
-      <div className={`content_container current_${currentTab}`}>{TABS[currentTab]}</div>
+      <TabBar />
+      <div className="content_container">{TABS[currentTab]}</div>
     </>
   );
 }

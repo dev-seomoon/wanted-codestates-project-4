@@ -1,30 +1,25 @@
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeTab } from '../../redux/tabSlice';
 import './TabBar.sass';
 
-function TabBar({ onClick, currentTab }) {
+function TabBar() {
+  const currentTab = useSelector((state) => state.tab.value);
+  const dispatch = useDispatch();
+
   return (
     <nav>
-      <button type="button" onClick={() => onClick(0)}>
+      <button type="button" onClick={() => dispatch(changeTab(0))}>
         알쓸B잡
       </button>
-      <button type="button" onClick={() => onClick(1)}>
+      <button type="button" onClick={() => dispatch(changeTab(1))}>
         유튜브
       </button>
-      <button type="button" onClick={() => onClick(2)}>
+      <button type="button" onClick={() => dispatch(changeTab(2))}>
         인사이트
       </button>
       <div className={`tab_bottom_line tab_${currentTab}`} />
     </nav>
   );
 }
-
-TabBar.propTypes = {
-  currentTab: PropTypes.number,
-  onClick: PropTypes.func.isRequired,
-};
-
-TabBar.defaultProps = {
-  currentTab: 0,
-};
 
 export default TabBar;
