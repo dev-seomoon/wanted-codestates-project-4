@@ -16,9 +16,8 @@ function App() {
     <BrowserRouter>
       <TabBar />
       <Routes>
-        <Route path="/" element={TABS[currentTab]}>
-          <Route path=":contentId" element={<ContentDetail />} />
-        </Route>
+        <Route path="/" element={TABS[currentTab]} />
+        <Route path="/:contentId" element={<ContentDetail />} />
       </Routes>
     </BrowserRouter>
   );
