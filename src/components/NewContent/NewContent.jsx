@@ -1,16 +1,22 @@
+import PropTypes, { number, string } from 'prop-types';
 import React from 'react';
 import './NewContent.sass';
 import HeartIcon from '../../assets/icon_heart.svg';
 import ShareIcon from '../../assets/icon_share.svg';
 
-function NewContent() {
+function NewContent({ newContents }) {
+  if (!newContents) return '';
   return (
     <div className="content_box new_content">
       <h2>
         새로 올라왔어요<span>NEW</span>
       </h2>
-      <img src="https://miro.medium.com/max/1400/1*fq92AQHOLSMqs-w7Pdkm5Q.jpeg" alt="new content" />
-      <p>비트코인과 낮은 시간 선호의 관계</p>
+      {newContents.map((c) => (
+        <a key={c.id} href={c.link}>
+          <img src={c.image} alt={c.title} />
+          <p>{c.title}</p>
+        </a>
+      ))}
       <div className="controller">
         <div>carousel buttons</div>
         <div className="icons">
@@ -21,5 +27,20 @@ function NewContent() {
     </div>
   );
 }
+
+NewContent.propTypes = {
+  newContents: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: number,
+      title: string,
+      image: string,
+      link: string,
+    })
+  ),
+};
+
+NewContent.defaultProps = {
+  newContents: null,
+};
 
 export default NewContent;
