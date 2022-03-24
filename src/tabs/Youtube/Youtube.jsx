@@ -6,7 +6,7 @@ import SubscriptionBanner from '../../components/SubscriptionBanner/Subscription
 import { fetchContents } from '../../redux/tabSlice';
 
 function Youtube() {
-  const currentTab = useSelector((state) => state.tab);
+  const { currentTab } = useSelector((state) => state.tab);
   const contents = useSelector((state) => state.tab.contents[currentTab]);
   const dispatch = useDispatch();
 
