@@ -1,5 +1,6 @@
 import PropTypes, { number, string } from 'prop-types';
 import React from 'react';
+import Slider from 'react-slick';
 import './NewContent.sass';
 import HeartIcon from '../../assets/icon_heart.svg';
 import ShareIcon from '../../assets/icon_share.svg';
@@ -11,18 +12,17 @@ function NewContent({ newContents }) {
       <h2>
         새로 올라왔어요<span>NEW</span>
       </h2>
-      {newContents.map((c) => (
-        <a key={c.id} href={c.link}>
-          <img src={c.image} alt={c.title} />
-          <p>{c.title}</p>
-        </a>
-      ))}
-      <div className="controller">
-        <div>carousel buttons</div>
-        <div className="icons">
-          <img src={HeartIcon} alt="Like button" className="icon heart" />
-          <img src={ShareIcon} alt="Share button" className="icon" />
-        </div>
+      <Slider dots>
+        {newContents.map((c) => (
+          <a key={c.id} href={c.link}>
+            <img src={c.image} alt={c.title} />
+            <p>{c.title}</p>
+          </a>
+        ))}
+      </Slider>
+      <div className="icons">
+        <img src={HeartIcon} alt="Like button" className="icon heart" />
+        <img src={ShareIcon} alt="Share button" className="icon" />
       </div>
     </div>
   );
