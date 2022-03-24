@@ -16,7 +16,7 @@ function NewContent({ newContents }) {
           <p>{c?.title}</p>
         </a>
       ) : (
-        <Link to={`/${c?.id}`}>
+        <Link to={`/${c?.id}`} key={c?.id}>
           <img src={c?.image} alt={c?.title} />
           <p>{c?.title}</p>
         </Link>
