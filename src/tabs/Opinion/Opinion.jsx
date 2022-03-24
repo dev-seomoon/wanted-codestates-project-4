@@ -6,11 +6,12 @@ import SubscriptionBanner from '../../components/SubscriptionBanner/Subscription
 import { fetchContents } from '../../redux/tabSlice';
 
 function Medium() {
-  const contents = useSelector((state) => state.tab.contents);
+  const { currentTab } = useSelector((state) => state.tab);
+  const contents = useSelector((state) => state.tab.contents[currentTab]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContents(1));
+    dispatch(fetchContents(currentTab + 1));
   }, []);
 
   if (!contents) return 'Loading...';

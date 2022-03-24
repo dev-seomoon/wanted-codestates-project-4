@@ -3,7 +3,7 @@ import { changeTab } from '../../redux/tabSlice';
 import './TabBar.sass';
 
 function TabBar() {
-  const currentTab = useSelector((state) => state.tab.value);
+  const { currentTab } = useSelector((state) => state.tab);
   const dispatch = useDispatch();
 
   return (

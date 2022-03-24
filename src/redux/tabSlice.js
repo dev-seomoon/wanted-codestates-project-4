@@ -2,8 +2,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: 0,
-  contents: null,
+  currentTab: 0,
+  contents: [null, null, null],
 };
 
 export const fetchContents = createAsyncThunk('fetchContents', async (sectorId) => {
@@ -30,12 +30,12 @@ export const tabSlice = createSlice({
   initialState,
   reducers: {
     changeTab: (state, action) => {
-      state.value = action.payload;
+      state.currentTab = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchContents.fulfilled, (state, action) => {
-      state.contents = action.payload;
+      state.contents[state.currentTab] = action.payload;
     });
   },
 });

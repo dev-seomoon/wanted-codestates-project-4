@@ -6,11 +6,12 @@ import NewContent from '../../components/NewContent/NewContent';
 import SubscriptionBanner from '../../components/SubscriptionBanner/SubscriptionBanner';
 
 function Insight() {
-  const contents = useSelector((state) => state.tab.contents);
+  const { currentTab } = useSelector((state) => state.tab);
+  const contents = useSelector((state) => state.tab.contents[currentTab]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContents(3));
+    dispatch(fetchContents(currentTab + 1));
   }, []);
 
   if (!contents) return 'Loading...';

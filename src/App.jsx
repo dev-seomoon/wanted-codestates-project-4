@@ -10,7 +10,7 @@ import './global.sass';
 const TABS = [<Opinion />, <Youtube />, <Insight />];
 
 function App() {
-  const currentTab = useSelector((state) => state.tab.value);
+  const { currentTab } = useSelector((state) => state.tab);
 
   return (
     <BrowserRouter>
