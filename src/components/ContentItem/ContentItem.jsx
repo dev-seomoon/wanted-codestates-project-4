@@ -1,22 +1,34 @@
+import { Link } from 'react-router-dom';
 import PropTypes, { number, string } from 'prop-types';
 import './ContentItem.sass';
+import { useMemo } from 'react';
 import HeartIcon from '../../assets/icon_heart.svg';
 import ShareIcon from '../../assets/icon_share.svg';
 
-function ContentItem({ content }) {
-  if (!content) return '';
-  const { image, link, like_cnt: likeCnt, title, upload_date: uploadDate } = content;
+function ContentItem({ content: c }) {
+  if (!c) return '';
+  const imgWrap = useMemo(
+    () =>
+      c.sector_id === 1 ? (
+        <a href={c.link} alt={c.title}>
+          <img src={c.image} alt={c.title} />
+        </a>
+      ) : (
+        <Link to={`/${c.id}`}>
+          <img src={c.image} alt={c.title} />
+        </Link>
+      ),
+    [c.sector_id]
+  );
   return (
     <div className="content_item">
-      <a href={link}>
-        <img src={image} alt={title} />
-      </a>
+      {imgWrap}
       <div className="info">
-        <span>{uploadDate}</span>
+        <span>{c.upload_date}</span>
         <div className="buttons">
           <button type="button">
             <img src={HeartIcon} alt="like icon" className="icon heart" />
-            <span>{likeCnt}</span>
+            <span>{c.like_cnt}</span>
           </button>
           <button type="button">
             <img src={ShareIcon} alt="like icon" className="icon" />
@@ -36,6 +48,7 @@ ContentItem.propTypes = {
     link: string,
     upload_date: string,
     like_cnt: number,
+    sector_id: number,
   }).isRequired,
 };
 
