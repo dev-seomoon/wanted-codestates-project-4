@@ -2,11 +2,11 @@
 import { useSelector } from 'react-redux';
 import TabBar from './components/TabBar/TabBar';
 import Insight from './tabs/Insight/Insight';
-import Medium from './tabs/Medium/Medium';
+import Opinion from './tabs/Opinion/Opinion';
 import Youtube from './tabs/Youtube/Youtube';
 import './global.sass';
 
-const TABS = [<Medium />, <Youtube />, <Insight />];
+const TABS = [<Opinion />, <Youtube />, <Insight />];
 
 function App() {
   const currentTab = useSelector((state) => state.tab.value);
