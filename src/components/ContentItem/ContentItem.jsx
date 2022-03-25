@@ -46,10 +46,15 @@ function ContentItem({ content: c }) {
             />
             <span>{userlike ? c.like_cnt + 1 : c.like_cnt}</span>
           </button>
-          <button type="button">
+          <a
+            href={c.sector_id === 2 ? `https://youtu.be/${c.link}` : c.link}
+            target="_blank"
+            alt={c.title}
+            rel="noreferrer"
+          >
             <img src={ShareIcon} alt="like icon" className="icon" />
             <span>공유하기</span>
-          </button>
+          </a>
         </div>
       </div>
     </div>

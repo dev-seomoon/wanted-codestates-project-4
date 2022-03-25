@@ -37,7 +37,15 @@ function NewContentItem({ content: c }) {
         <button type="button" className="icon heart" onClick={handleLike}>
           <img src={userlike ? HeartFullIcon : HeartIcon} alt="Like button" />
         </button>
-        <img src={ShareIcon} alt="Share button" className="icon" />
+        <a
+          href={c.sector_id === 2 ? `https://youtu.be/${c.link}` : c.link}
+          target="_blank"
+          alt={c.title}
+          rel="noreferrer"
+          className="icon"
+        >
+          <img src={ShareIcon} alt="Share button" />
+        </a>
       </div>
     </>
   );

@@ -54,10 +54,15 @@ function ContentDetail() {
           <img src={userlike ? HeartFullIcon : HeartIcon} alt="like icon" className="icon" />
           좋아요
         </button>
-        <button type="button">
+        <a
+          href={content.sector_id === 2 ? `https://youtu.be/${content.link}` : content.link}
+          target="_blank"
+          alt={content.title}
+          rel="noreferrer"
+        >
           <img src={ShareIcon} alt="share icon" className="icon" />
           공유하기
-        </button>
+        </a>
       </div>
     </div>
   );
