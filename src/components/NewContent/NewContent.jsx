@@ -10,7 +10,7 @@ function NewContent({ newContents }) {
       <h2>
         새로 올라왔어요<span>NEW</span>
       </h2>
-      <Slider dots>
+      <Slider dots autoplay autoplaySpeed={5000}>
         {newContents.map((content) => (
           <NewContentItem key={content.id} content={content} />
         ))}
