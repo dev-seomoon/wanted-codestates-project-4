@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 export const SECTOR_TITLE = [
   { kr: '알쓸B잡', en: 'News' },
   { kr: '블록체인 NOW', en: 'Youtube' },
