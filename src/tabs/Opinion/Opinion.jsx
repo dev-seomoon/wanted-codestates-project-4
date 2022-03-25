@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContentList from '../../components/ContentList/ContentList';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import NewContent from '../../components/NewContent/NewContent';
 import SubscriptionBanner from '../../components/SubscriptionBanner/SubscriptionBanner';
 import { fetchContents } from '../../redux/tabSlice';
@@ -14,7 +15,7 @@ function Medium() {
     dispatch(fetchContents(currentTab + 1));
   }, []);
 
-  if (!contents) return 'Loading...';
+  if (!contents) return <LoadingSpinner />;
 
   return (
     <div className="content">

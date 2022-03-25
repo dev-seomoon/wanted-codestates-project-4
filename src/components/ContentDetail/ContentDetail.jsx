@@ -8,6 +8,7 @@ import HeartIcon from '../../assets/icon_heart.svg';
 import HeartFullIcon from '../../assets/icon_heart_full.svg';
 import ShareIcon from '../../assets/icon_share.svg';
 import { SECTOR_TITLE } from '../../constants';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 function ContentDetail() {
   const { contentId } = useParams();
@@ -19,7 +20,7 @@ function ContentDetail() {
     dispatch(fetchContentById(contentId));
   }, [contentId]);
 
-  if (!content) return 'Loading...';
+  if (!content) return <LoadingSpinner />;
 
   const handleLike = () => {
     dispatch(increaseLike({ id: content.id }));

@@ -4,6 +4,7 @@ import { fetchContents } from '../../redux/tabSlice';
 import ContentList from '../../components/ContentList/ContentList';
 import NewContent from '../../components/NewContent/NewContent';
 import SubscriptionBanner from '../../components/SubscriptionBanner/SubscriptionBanner';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
 function Insight() {
   const { currentTab } = useSelector((state) => state.tab);
@@ -14,7 +15,7 @@ function Insight() {
     dispatch(fetchContents(currentTab + 1));
   }, []);
 
-  if (!contents) return 'Loading...';
+  if (!contents) return <LoadingSpinner />;
 
   return (
     <div className="content">
