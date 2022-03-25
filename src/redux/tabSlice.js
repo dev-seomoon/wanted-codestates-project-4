@@ -4,6 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState = {
   currentTab: 0,
   contents: [null, null, null],
+  content: null,
 };
 
 export const fetchContents = createAsyncThunk('fetchContents', async (sectorId) => {
@@ -20,9 +21,28 @@ export const fetchContents = createAsyncThunk('fetchContents', async (sectorId) 
     const resObj = await res.json();
     return resObj.content;
   } catch (e) {
-    console.log(e);
+    console.warn(e);
   }
   return null;
+});
+
+export const fetchContentById = createAsyncThunk('fetchContentById', async (contentId) => {
+  try {
+    const res = await fetch(
+      `https://cors-anywhere.herokuapp.com/https://test.daground.io/info/contents?content=${contentId}`,
+      {
+        method: 'GET',
+        headers: {
+          'TEST-AUTH': 'wantedpreonboarding',
+        },
+      }
+    );
+    const resObj = await res.json();
+    return resObj.content[0];
+  } catch (e) {
+    console.warn(e);
+    return null;
+  }
 });
 
 export const tabSlice = createSlice({
@@ -36,6 +56,9 @@ export const tabSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchContents.fulfilled, (state, action) => {
       state.contents[state.currentTab] = action.payload;
+    });
+    builder.addCase(fetchContentById.fulfilled, (state, action) => {
+      state.content = action.payload;
     });
   },
 });
