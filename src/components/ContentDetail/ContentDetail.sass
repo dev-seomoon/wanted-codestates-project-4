@@ -1,5 +1,6 @@
 header
   height: 70px
+  width: 100%
   background-color: #fff
   display: flex
   align-items: center
@@ -15,3 +16,62 @@ header
     font-size: 5rem
     font-weight: 300
     color: #aaa
+
+.content_detail
+  background-color: #fff
+  height: fit-content
+  overflow: auto
+  display: flex
+  flex-direction: column
+  align-items: center
+  .more_button
+    width: 200px
+    border-radius: 30px
+    margin-bottom: 60px
+    display: flex
+    align-items: center
+    justify-content: center
+
+.video
+  position: relative
+  width: 100%
+  padding-bottom: 56.25%
+  iframe
+    position: absolute
+    width: 100%
+    height: 100%
+
+.content_title
+  width: calc( 100% - 5px )
+  background-color: #efefef
+  font-size: 2rem
+  line-height: 1.5
+  margin: 20px auto
+  padding: 15px
+  box-sizing: border-box
+  border-radius: 1px
+  text-align: center
+
+.content_body
+  font-size: 1.8rem
+  line-height: 1.6
+  padding: 2rem 5rem
+  box-sizing: border-box
+  white-space: pre-line
+  margin-bottom: 30px
+
+.button_wrap
+  display: flex
+  align-items: center
+  justify-content: center
+  margin-bottom: 40px
+  button
+    font-size: 1.5rem
+    color: #aaa
+    display: flex
+    align-items: center
+    flex-grow: 0
+    margin: 0 5px
+  .icon
+    height: 1.5rem
+    margin: 0 3px
