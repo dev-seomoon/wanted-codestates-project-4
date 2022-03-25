@@ -1,15 +1,2 @@
-# 🚀 Welcome to your new awesome project!
-
-This project has been created using **webpack-cli**, you can now run
-
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+# 디에이그라운드 기업과제 개인
+배포 주소 : https://sandbank.surge.sh
