@@ -12,7 +12,7 @@ export const likeSlice = createSlice({
     increaseLike: (state, action) => {
       const { id } = action.payload;
       if (!state.likes) state.likes = [];
-      state.likes[id] = 1;
+      state.likes[id] = state.likes[id] ? 0 : 1;
     },
   },
 });
