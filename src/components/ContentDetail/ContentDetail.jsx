@@ -2,19 +2,28 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { fetchContentById } from '../../redux/tabSlice';
+import { increaseLike } from '../../redux/likeSlice';
 import './ContentDetail.sass';
 import HeartIcon from '../../assets/icon_heart.svg';
+import HeartFullIcon from '../../assets/icon_heart_full.svg';
 import ShareIcon from '../../assets/icon_share.svg';
 
 function ContentDetail() {
   const { contentId } = useParams();
-  const { content } = useSelector((state) => state.tab);
   const dispatch = useDispatch();
+  const { content } = useSelector((state) => state.tab);
+  const userlike = useSelector((state) => (content ? state.like.likes[content.id] : null));
+
   useEffect(() => {
     dispatch(fetchContentById(contentId));
   }, [contentId]);
+
   if (!content) return 'Loading...';
-  console.log(content);
+
+  const handleLike = () => {
+    dispatch(increaseLike({ id: content.id }));
+  };
+
   return (
     <div className="content_detail">
       <header>
@@ -41,8 +50,8 @@ function ContentDetail() {
         </>
       )}
       <div className="button_wrap">
-        <button type="button">
-          <img src={HeartIcon} alt="like icon" className="icon" />
+        <button type="button" onClick={handleLike}>
+          <img src={userlike ? HeartFullIcon : HeartIcon} alt="like icon" className="icon" />
           좋아요
         </button>
         <button type="button">
