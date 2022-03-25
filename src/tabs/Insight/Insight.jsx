@@ -20,7 +20,7 @@ function Insight() {
     <div className="content">
       <NewContent newContents={contents.filter((content) => content.like_top)} />
       <SubscriptionBanner />
-      <ContentList contents={contents} />
+      <ContentList contents={contents} sectorIndex={2} />
     </div>
   );
 }

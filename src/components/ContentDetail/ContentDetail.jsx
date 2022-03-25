@@ -7,6 +7,7 @@ import './ContentDetail.sass';
 import HeartIcon from '../../assets/icon_heart.svg';
 import HeartFullIcon from '../../assets/icon_heart_full.svg';
 import ShareIcon from '../../assets/icon_share.svg';
+import { SECTOR_TITLE } from '../../constants';
 
 function ContentDetail() {
   const { contentId } = useParams();
@@ -27,7 +28,7 @@ function ContentDetail() {
   return (
     <div className="content_detail">
       <header>
-        <h2>블록체인 NOW</h2>
+        <h2>{SECTOR_TITLE[content.sector_id - 1].kr}</h2>
         <Link to="/">{`<`}</Link>
       </header>
       {content.sector_id === 2 && (

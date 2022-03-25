@@ -20,7 +20,7 @@ function Medium() {
     <div className="content">
       <NewContent newContents={contents.filter((content) => content.like_top)} />
       <SubscriptionBanner />
-      <ContentList contents={contents} />
+      <ContentList contents={contents} sectorIndex={0} />
     </div>
   );
 }

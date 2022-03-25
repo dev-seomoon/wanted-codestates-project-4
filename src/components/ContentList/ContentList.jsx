@@ -2,8 +2,9 @@ import PropTypes, { number, string } from 'prop-types';
 import { useMemo, useState } from 'react';
 import ContentItem from '../ContentItem/ContentItem';
 import './ContentList.sass';
+import { SECTOR_TITLE } from '../../constants';
 
-function ContentList({ contents }) {
+function ContentList({ contents, sectorIndex }) {
   const [collapse, setCollapse] = useState(true);
   if (!contents) return '';
   const contentElements = useMemo(
@@ -13,7 +14,8 @@ function ContentList({ contents }) {
   return (
     <div className="content_box content_list">
       <h2>
-        알쓸B잡<span>News</span>
+        {SECTOR_TITLE[sectorIndex].kr}
+        <span>{SECTOR_TITLE[sectorIndex].en}</span>
       </h2>
       {collapse ? contentElements.slice(0, 3) : contentElements}
       <button type="button" className="more_button" onClick={() => setCollapse((prev) => !prev)}>
@@ -32,6 +34,7 @@ ContentList.propTypes = {
       link: string,
     })
   ),
+  sectorIndex: number.isRequired,
 };
 
 ContentList.defaultProps = {
