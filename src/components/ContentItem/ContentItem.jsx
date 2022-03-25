@@ -1,12 +1,23 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes, { number, string } from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { increaseLike } from '../../redux/likeSlice';
 import './ContentItem.sass';
-import { useMemo } from 'react';
 import HeartIcon from '../../assets/icon_heart.svg';
+import HeartFullIcon from '../../assets/icon_heart_full.svg';
 import ShareIcon from '../../assets/icon_share.svg';
 
 function ContentItem({ content: c }) {
+  const dispatch = useDispatch();
   if (!c) return '';
+
+  const userlike = useSelector((state) => state.like.likes[c.id]);
+
+  const handleLike = () => {
+    dispatch(increaseLike({ id: c.id }));
+  };
+
   const imgWrap = useMemo(
     () =>
       c.sector_id === 1 ? (
@@ -20,15 +31,20 @@ function ContentItem({ content: c }) {
       ),
     [c.sector_id]
   );
+
   return (
     <div className="content_item">
       {imgWrap}
       <div className="info">
         <span>{c.upload_date}</span>
         <div className="buttons">
-          <button type="button">
-            <img src={HeartIcon} alt="like icon" className="icon heart" />
-            <span>{c.like_cnt}</span>
+          <button type="button" onClick={handleLike}>
+            <img
+              src={userlike ? HeartFullIcon : HeartIcon}
+              alt="like icon"
+              className="icon heart"
+            />
+            <span>{userlike ? c.like_cnt + 1 : c.like_cnt}</span>
           </button>
           <button type="button">
             <img src={ShareIcon} alt="like icon" className="icon" />
