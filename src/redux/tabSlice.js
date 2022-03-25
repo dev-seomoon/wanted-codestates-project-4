@@ -5,6 +5,7 @@ const initialState = {
   currentTab: 0,
   contents: [null, null, null],
   content: null,
+  likes: null,
 };
 
 export const fetchContents = createAsyncThunk('fetchContents', async (sectorId) => {
@@ -52,6 +53,11 @@ export const tabSlice = createSlice({
     changeTab: (state, action) => {
       state.currentTab = action.payload;
     },
+    increaseLike: (state, action) => {
+      const { id, prev } = action.payload;
+      if (!state.likes) state.likes = [];
+      state.likes[id] = prev + 1;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchContents.fulfilled, (state, action) => {
@@ -63,6 +69,6 @@ export const tabSlice = createSlice({
   },
 });
 
-export const { changeTab } = tabSlice.actions;
+export const { changeTab, increaseLike } = tabSlice.actions;
 
 export default tabSlice.reducer;
