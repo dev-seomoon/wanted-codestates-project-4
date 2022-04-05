@@ -77,26 +77,16 @@ webpack config 파일 babel-loader 옵션에 preset-env target esmoules: true로
 ### CORS 에러
 **API 호출 과정에서 CORS 에러 발생**
 
-no-cors mode로 시도했더니 Preflight 과정에서 cors 발생은 하지 않지만 401 에러가 뜸.  
-
+1. no-cors mode로 시도했더니 Preflight 과정에서 cors 발생은 하지 않지만 401 에러가 뜸.  
 no-cors 모드 요청이 제한되어 있는 건가 싶어서 
-
 cors 모드로 요청하되 프록시를 사용해서 해결해보기로 함. 
 
-요청 url 앞에 아래 링크를 붙여서 요청해서 해결했다. 
-
-[https://cors-anywhere.herokuapp.com/](https://cors-anywhere.herokuapp.com/) 
-
-프록시 서버를 거쳐 요청이 전달되기 때문에 응답 속도가 조금 느려질 수 있고, 
-
-몇 시간에 한 번씩 ‘Request temporary access to the demo server` 버튼을 눌러서 갱신해줘야 한다. 
-
-외부 API를 호출해야 해서 서버를 직접 제어할 수 없는 경우에는 
-
-cors 이슈를 가장 빠르게 해결할 수 있는 임시방책으로 좋은 것 같다. 
-
-공유 기능이 없으니까 url을 통해서 특정  탭/페이지를 공유할 수 있도록 라우팅을 추가함
-
+2. 요청 url 앞에 아래 링크를 붙여서 요청해서 해결했다.  
+[https://cors-anywhere.herokuapp.com/](https://cors-anywhere.herokuapp.com/)  
+프록시 서버를 거쳐 요청이 전달되기 때문에 응답 속도가 조금 느려질 수 있고,  
+몇 시간에 한 번씩 ‘Request temporary access to the demo server` 버튼을 눌러서 갱신해줘야 한다.  
+외부 API를 호출해야 해서 서버를 직접 제어할 수 없는 경우에는  
+cors 이슈를 가장 빠르게 해결할 수 있는 임시방책으로 좋은 것 같다.  
 
 ## 아쉬운 점 / 개선점 
 - 반응형으로 구현하긴 했지만, 
